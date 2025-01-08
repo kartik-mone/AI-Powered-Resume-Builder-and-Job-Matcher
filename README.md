@@ -107,8 +107,5 @@ A web application to create professional resumes and match users with job opport
 
 ---
 
-## License
-Licensed under the [MIT License](LICENSE).
-```
 
 Let me know if you need further edits!
