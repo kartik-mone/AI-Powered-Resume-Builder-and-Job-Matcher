@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Job Recommendations</h2>
+    <ul>
+        {% for job, score in job_scores %}
+            <li>
+                <h3>{{ job.title }}</h3>
+                <p>{{ job.description }}</p>
+                <p>Location: {{ job.location }}</p>
+                <p>Salary: ${{ job.salary }}</p>
+                <p>Match Score: {{ score }}</p>
+                <form action="{{ url_for('apply', job_id=job.id) }}" method="POST">
+                    <button type="submit">Apply</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

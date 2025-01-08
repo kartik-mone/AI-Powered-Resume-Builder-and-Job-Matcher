@@ -1,0 +1,20 @@
+import pickle
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+
+# Sample job data and user skills (in practice, this would come from your database)
+job_descriptions = ["Software Engineer at XYZ", "Data Scientist at ABC", "Web Developer at LMN"]
+user_skills = ["Python, JavaScript, SQL", "Python, Machine Learning, Data Science", "HTML, CSS, JavaScript"]
+
+# Vectorize job descriptions and user skills
+vectorizer = TfidfVectorizer(stop_words='english')
+job_vectors = vectorizer.fit_transform(job_descriptions)
+user_vectors = vectorizer.transform(user_skills)
+
+# Calculate cosine similarity between jobs and user skills
+similarity_scores = cosine_similarity(user_vectors, job_vectors)
+
+# Save the trained model
+with open('models/ml_model.pkl', 'wb') as f:
+    pickle.dump(similarity_scores, f)

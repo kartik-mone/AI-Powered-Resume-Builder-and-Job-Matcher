@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Admin Panel</h2>
+    <a href="{{ url_for('post_job') }}">Post a New Job</a>
+    <h3>Posted Jobs</h3>
+    <ul>
+        {% for job in jobs %}
+            <li>
+                <h3>{{ job.title }}</h3>
+                <p>{{ job.description }}</p>
+                <p>Location: {{ job.location }}</p>
+                <p>Salary: ${{ job.salary }}</p
+::contentReference[oaicite:0]{index=0}
+ 

@@ -1,0 +1,29 @@
+CREATE DATABASE RESUME_PROJECT
+use resume_project
+CREATE TABLE user (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(120) UNIQUE NOT NULL,
+    email VARCHAR(120) UNIQUE NOT NULL,
+    password VARCHAR(128) NOT NULL,
+    skills VARCHAR(500) NOT NULL,
+    experience VARCHAR(500) NOT NULL,
+    resume VARCHAR(500)
+);
+
+CREATE TABLE job (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    description VARCHAR(500) NOT NULL,
+    location VARCHAR(100) NOT NULL,
+    salary FLOAT NOT NULL
+);
+
+CREATE TABLE application (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    user_id INTEGER NOT NULL,
+    job_id INTEGER NOT NULL,
+    status VARCHAR(100) DEFAULT 'Applied' NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES user(id),
+    FOREIGN KEY (job_id) REFERENCES job(id)
+);
+
